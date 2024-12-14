@@ -140,8 +140,43 @@
             ]
            
         },
-         {
+        {
             "id": 9,
+            "title": "GululuBot🦮",
+            "category": "Website",
+            "tags": ["AI", "Website"],
+            "description": "Talk to my dog!",
+            "tech": "javascript",
+            "date": "April 2024",
+            "link": "https://lilgreeenn.github.io/gululubot/",
+           
+            "image": "1200.png",
+            "gallery": [
+               
+                "1201.png",
+                "1202.png",
+                "1203.png"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Music diary📓",
+            "category": "Website",
+            "tags": ["Website"],
+            "description": "Music diary📓",
+            "tech": "javascript",
+            "date": "December 2024",
+            "link": "https://lilgreeenn.github.io/gululubot/",
+           
+            "image": "1301.png",
+            "gallery": [
+               
+                "1301.png"
+              
+            ]
+        },
+         {
+            "id": 11,
             "title": "Dusty Memories",
             "category": "Comic",
             "tags": ["Comic"],
@@ -168,7 +203,7 @@
            
         },
         {
-            "id": 10,
+            "id": 12,
             "title": "Young, Wild and Free",
             "category": "Comic",
             "tags": ["Comic"],
@@ -184,8 +219,40 @@
                 "1107.png",
                 "1108.png"
             ]
+        },
+        {
+            "id": 13,
+            "title": "Layoff! Survive!",
+            "category": "Animation",
+            "tags": ["Animation","Interactive video","VR"],
+            "description": "Layoff! And Survive!",
+            "tech": "2D Animation", 
+            "date": "May 2024",
+            "link": "https://www.bilibili.com/video/BV1DZ421x7iW/?spm_id_from=333.999.0.0",
+            "image": "1400.png",
+            "gallery": [
+                "1401.png",
+                "1402.png",
+                "1403.png"
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Running Life",
+            "category": "Animation",
+            "tags": ["2D Animation"],
+            "description": "Running Life",
+            "tech": "2D Animation", 
+            "date": "May 2024",
+            "link": "https://www.bilibili.com/video/BV1DZ421x7iW/?spm_id_from=333.999.0.0",
+            "image": "1500.png",
+            "gallery": [
+                "1501.png",
+                "1502.png",
+                "1503.png",
+                "1504.png"
+            ]
         }
-       
-
+        
     ]
 }

@@ -1,0 +1,191 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "Living in Internet World",
+            "category": "Fashion",
+            "tags": ["Air Pump", "Futuristic fashion"],
+            "description": "NPCs,but in reality",
+           
+            "tech": "air pump",
+            "date": "October 2023",
+            "link": "https://docs.google.com/presentation/d/11ZJzm3Bc2oZ_NtaMEWC43mx1F-GB4C-2lYUuD-ikChw/edit?usp=sharing",
+            "image": "1.png",
+            "gallery": [
+                "111.png",
+                "112.png",
+                "113.png"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Back to the Old town",
+            "category": "Fashion",
+            "tags": ["Fashion","Dunhuang", "LEDs"],
+            "description": "Pulse sensor and LED light to output a different color based on the user’s heart rate",
+           
+            "tech": "LEDs",
+            "date": "October 2023",
+            "image": "4.png",
+            "gallery": [
+                "411.png",
+                "412.png",
+                "413.png"
+            ]
+           
+        },
+        {
+            "id": 3,
+            "title": "Run",
+            "category": "Fashion",
+            "tags": ["Beads", "Fashion"],
+           
+            "tech": "Beads",
+            "date": "May 2023",
+            "image": "510.png",
+            "gallery": [
+                "511.png",
+                "512.png",
+                "513.png",
+                "514.png"
+            ]
+           
+        },
+        {
+            "id": 4,
+            "title": "Bride",
+            "category": "Fashion",
+            "tags": ["Upcycle", "Fashion"],
+           
+            "tech": "Upcycle",
+            "date": "February 2023",
+            "image": "610.png",
+            "gallery": [
+                "611.png",
+                "612.png",
+                "613.png",
+                "614.png",
+                "615.png"
+            ]
+           
+        },
+        {
+            "id": 5,
+            "title": "Upcycle High Fashion",
+            "category": "Fashion",
+            "tags": ["Upcycle", "Fashion"],
+           
+            "tech": "fashion",
+            "date": "May 2024",
+            "image": "710.png",
+            "gallery": [
+                "711.png",
+                "712.png",
+                "713.png",
+                "714.png",
+                "715.png",
+                "716.png"
+            ]
+            
+           
+        },
+        {
+            "id": 6,
+            "title": "Pure",
+            "category": "Fashion",
+            "tags": ["Fashion", "Machine Knitting"],
+          
+            "tech": "Machine Knitting",
+            "date": "December 2024",
+            "image": "810.JPG",
+            "gallery": [
+                "811.JPG",
+                "812.JPG",
+                "813.JPG",
+                "814.JPG"
+            ]
+           
+        },
+        {
+            "id": 7,
+            "title": "Abandon Garden",
+            "category": "Fashion",
+            "tags": ["Fashion", "Machine Knitting"],
+           
+            "tech": "Fashion",
+            "date": "May 2023",
+            "image": "910.png",
+            "gallery": [
+                "911.png",
+                "912.png",
+                "913.png"
+            ]
+           
+        },
+        {
+            "id": 8,
+            "title": "MusikaJ",
+            "category": "Website",
+            "tags": ["Self as system", "JavaScript", "Music"],
+          
+            "tech": "javascript",
+            "date": "October 2024",
+            "link": "https://www.youtube.com/watch?v=Pj9aV0__WJo",
+            "demoLink": "https://lilgreeenn.github.io/MusikaJ/index.html",
+            "image": "210.png",
+            "gallery": [
+                "211.png",
+                "212.png",
+                "213.png"
+            ]
+           
+        },
+         {
+            "id": 9,
+            "title": "Dusty Memories",
+            "category": "Comic",
+            "tags": ["Comic"],
+         
+            "tech": "Comic",
+            "date": "October 2024",
+            "link": "https://drive.google.com/file/d/1lnvFNaVhuJOKEi6Tla3dqlv0U1OVznpb/view?usp=drive_link",
+            "image": "1010.png",
+            "gallery": [
+                "1011.png",
+                "1012.png",
+                "1013.png",
+                "1014.png",
+                "1015.png",
+                "1016.png",
+                "1017.png",
+                "1018.png",
+                "1019.png",
+                "1020.png",
+                "1021.png",
+                "1022.png",
+                "1023.png"
+            ]
+           
+        },
+        {
+            "id": 10,
+            "title": "Young, Wild and Free",
+            "category": "Comic",
+            "tags": ["Comic"],
+            "description": "Responsive corporate website development using the latest frontend tech stack.",
+            "image": "1101.PNG",
+            "gallery": [
+               
+                "1102.png",
+                "1103.png",
+                "1104.png",
+                "1105.png",
+                "1106.png",
+                "1107.png",
+                "1108.png"
+            ]
+        }
+       
+
+    ]
+}

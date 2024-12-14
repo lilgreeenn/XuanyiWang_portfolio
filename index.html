@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 无限滚动作品集画廊</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="gallery card-container">
+        <div class="card" data-category="Fashion">
+            <img src="1.png" alt="Living in Internet World">
+            <div class="card-info">
+                <h3>Living in Internet World</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Air Pump, Futuristic fashion</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="4.png" alt="Back to the Old town">
+            <div class="card-info">
+                <h3>Back to the Old town</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Fashion, LEDs</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="510.png" alt="run">
+            <div class="card-info">
+                <h3>Run</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Beads, Fashion</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="610.png" alt="Bride">
+            <div class="card-info">
+                <h3>Bride</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Fashion, Upcycle</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="710.png" alt="Upcycle High Fashion">
+            <div class="card-info">
+                <h3>Upcycle High Fashion</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Upcycle, Fashion</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="810.JPG" alt="Pure">
+            <div class="card-info">
+                <h3>Pure</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Fashion, Machine Knitting</p>
+            </div>
+        </div>
+        <div class="card" data-category="Fashion">
+            <img src="910.png" alt="Abandon Garden">
+            <div class="card-info">
+                <h3>Abandon Garden</h3>
+                <p>Category: Fashion</p>
+                <p>Tags: Fashion, Biomaterials</p>
+            </div>
+        </div>
+        <div class="card" data-category="Website">
+            <img src="210.png" alt="Project 2">
+            <div class="card-info">
+                <h3>MusikaJ</h3>
+                <p>Category: Website</p>
+                <p>Tags: Self as system, JavaScript, Music</p>
+            </div>
+        </div>
+        <div class="card" data-category="Comic">
+            <img src="1010.png" alt="Dusty Memories">
+            <div class="card-info">
+                <h3>Dusty Memories</h3>
+                <p>Category: Comic</p>
+                <p>Tags: comic</p>
+            </div>
+        </div>
+        <div class="card" data-category="Comic">
+            <img src="1101.PNG" alt="Young, Wild and Free">
+            <div class="card-info">
+                <h3>Young, Wild and Free</h3>
+                <p>Category: Comic</p>
+                <p>Tags: comic</p>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="categories">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="Animation">Animation</button>
+        <button class="category-btn" data-category="Website">Website</button>
+        <button class="category-btn" data-category="Fashion">Fashion</button>
+        <button class="category-btn" data-category="VR">VR</button>
+        <button class="category-btn" data-category="AR">AR</button>
+        <button class="category-btn" data-category="Comic">Comic</button>
+    </div>
+    <div id="project-details" class="project-details">
+        <div class="project-content">
+            <button id="close-details" class="close-btn">&times;</button>
+            <div class="project-header">
+                <h2 id="project-title"></h2>
+                <div class="project-meta">
+                    <span id="project-category"></span>
+                    <span id="project-tags"></span>
+                </div>
+            </div>
+            <div class="project-body">
+                <div class="project-image-container">
+                    <img id="project-image" src="" alt="">
+                </div>
+                <div class="project-info">
+                    <p id="project-description"></p>
+                    <div class="project-details-list">
+                        <div class="detail-item">
+                            <h4>Tech Stack</h4>
+                            <p id="project-tech"></p>
+                        </div>
+                        <div class="detail-item">
+                            <h4>Date</h4>
+                            <p id="project-date"></p>
+                        </div>
+                    </div>
+                    <div id="project-link" class="project-link"></div>
+                </div>
+            </div>
+            <div class="project-gallery"></div>
+            <div class="project-features"></div>
+            <div class="team-info"></div>
+        </div>
+    </div>
+    <script type="module" src="cardModule.js"></script>
+    <script type="module" src="script.js"></script>
+    <!-- Code injected by live-server -->
+
+</body>
+
+</html>

@@ -267,68 +267,23 @@ export function hideProjectDetails() {
     document.body.style.overflow = 'auto';
 }
 
-export function filterCards(category, cards) {
-    const allCards = Array.from(cards);
-    const containerWidth = cards[0].parentElement.offsetWidth;
-    const containerHeight = cards[0].parentElement.offsetHeight;
-    const cardWidth = 600; // 卡片宽度
-    const cardHeight = 400; // 卡片高度
+export function filterCards(category) {
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) return;
     
-    // 重置所有卡片状态
-    allCards.forEach(card => {
-        card.classList.remove('active');
-        card.style.opacity = '1';
-        card.style.display = 'block';
-    });
+    const cards = gallery.querySelectorAll('.card');
+    if (!cards || cards.length === 0) return;
 
-    // 筛选卡片
-    const visibleCards = category === 'all' 
-        ? allCards 
-        : allCards.filter(card => card.dataset.category === category);
-
-    // 隐藏不符合条件的卡片
-    allCards.forEach(card => {
-        if (!visibleCards.includes(card)) {
-            card.style.display = 'none';
+    const cardsArray = Array.from(cards);
+    
+    cardsArray.forEach(card => {
+        if (category === 'all') {
+            card.style.display = 'block';
+        } else {
+            const cardCategory = card.dataset.category;
+            card.style.display = cardCategory === category ? 'block' : 'none';
         }
     });
-
-    // 计算布局参数
-    const totalCards = visibleCards.length;
-    const spacing = 50; // 固定间距
-    
-    // 计算总宽度（所有卡片宽度 + 间距）
-    const totalWidth = (cardWidth * totalCards) + (spacing * (totalCards - 1));
-    
-    // 计算起始位置（使整体居中）
-    const startX = (containerWidth - totalWidth) / 2;
-    const centerY = (containerHeight - cardHeight) / 2;
-
-    // 重新排序可见卡片
-    visibleCards.forEach((card, index) => {
-        // 计算每张卡片的位置
-        const x = startX + (index * (cardWidth + spacing));
-        
-        // 应用变换
-        card.style.transform = `
-            translate(${x}px, ${centerY}px)
-            scale(0.8)
-            rotate(${index % 2 === 0 ? 5 : -5}deg)
-        `;
-
-        // 设置z-index
-        card.style.zIndex = totalCards - index;
-        card.dataset.originalZIndex = totalCards - index;
-        
-        // 设置过渡效果
-        card.style.transition = 'all 0.5s ease';
-        
-        // 设置位置属性用于动画
-        card.dataset.position = index;
-    });
-
-    // 添加自动滚动效果
-    startAutoScroll(visibleCards, containerWidth, cardWidth, spacing, startX, totalCards);
 }
 
 // 修改自动滚动函数
@@ -450,7 +405,7 @@ function handleCardHover(event) {
     });
 
     // 将当前悬浮的卡片设置最高层级
-    card.style.zIndex = '99999'; // 使用更高的z-index确保在最上层
+    card.style.zIndex = '99999'; // 使用更高的z-index确���在最上层
 
     const currentTransform = card.style.transform || '';
     if (currentTransform.includes('scale')) {
@@ -529,7 +484,7 @@ function handleCardMouseMove(event) {
     const deltaX = (mouseX - centerX) / (rect.width / 2);
     const deltaY = (mouseY - centerY) / (rect.height / 2);
 
-    // 限制旋转角度在 -15 到 15 度之间
+    // 限制旋���角度在 -15 到 15 度之间
     const rotateX = deltaY * -15;
     const rotateY = deltaX * 15;
 
@@ -552,7 +507,7 @@ function handleCardMouseLeave(event) {
     const card = event.target.closest('.card');
     if (!card || card.classList.contains('active')) return;
 
-    // 移除hover-effect类���恢复正常transition
+    // 移除hover-effect类恢复正常transition
     card.classList.remove('hover-effect');
 
     // 重置变换
@@ -565,3 +520,5 @@ function handleCardMouseLeave(event) {
         scale(0.8)
     `;
 }
+
+

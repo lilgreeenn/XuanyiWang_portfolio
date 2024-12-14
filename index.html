@@ -4,12 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D 无限滚动作品集画廊</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .gallery {
+            /* ... existing styles ... */
+            transform-style: preserve-3d; /* 确保3D效果 */
+            backface-visibility: hidden; /* 隐藏背面以减少闪烁 */
+            will-change: transform, opacity; /* 提示浏览器优化 */
+        }
+    </style>
 </head>
 
 <body>
+    <button id="layout-toggle" class="layout-toggle-btn">
+        切换布局
+    </button>
+    <div class="categories">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="Animation">Animation</button>
+        <button class="category-btn" data-category="Website">Website</button>
+        <button class="category-btn" data-category="Fashion">Fashion</button>
+        <button class="category-btn" data-category="VR">VR</button>
+        <button class="category-btn" data-category="AR">AR</button>
+        <button class="category-btn" data-category="Comic">Comic</button>
+    </div>
     <div class="gallery card-container">
         <div class="card" data-category="Fashion">
             <img src="1.png" alt="Living in Internet World">
@@ -94,15 +114,6 @@
 
         
     </div>
-    <div class="categories">
-        <button class="category-btn active" data-category="all">All</button>
-        <button class="category-btn" data-category="Animation">Animation</button>
-        <button class="category-btn" data-category="Website">Website</button>
-        <button class="category-btn" data-category="Fashion">Fashion</button>
-        <button class="category-btn" data-category="VR">VR</button>
-        <button class="category-btn" data-category="AR">AR</button>
-        <button class="category-btn" data-category="Comic">Comic</button>
-    </div>
     <div id="project-details" class="project-details">
         <div class="project-content">
             <button id="close-details" class="close-btn">&times;</button>
@@ -139,6 +150,13 @@
     </div>
     <script type="module" src="cardModule.js"></script>
     <script type="module" src="script.js"></script>
+    <script>
+      function animateGallery() {
+        // ... existing code ...
+        requestAnimationFrame(animateGallery); // 使用requestAnimationFrame
+      }
+      animateGallery();
+    </script>
     <!-- Code injected by live-server -->
 
 </body>

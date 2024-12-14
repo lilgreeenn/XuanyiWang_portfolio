@@ -19,12 +19,49 @@ let currentIndex = 0;
 let totalCards = cards.length;
 const visibleCards = 15;
 
+// 添加一个节流变量
+let isScrolling = false;
+let scrollTimeout = null;
+
+const layoutToggle = document.getElementById('layout-toggle');
+let isMasonryLayout = false;
+
+layoutToggle.addEventListener('click', () => {
+    const gallery = document.querySelector('.gallery');
+    isMasonryLayout = !isMasonryLayout;
+    
+    if (isMasonryLayout) {
+        gallery.classList.add('masonry');
+        gallery.removeEventListener('wheel', handleScroll);
+        document.removeEventListener('mousemove', handleMouseMove);
+    } else {
+        gallery.classList.remove('masonry');
+        gallery.addEventListener('wheel', handleScroll, { passive: false });
+        document.addEventListener('mousemove', handleMouseMove);
+        
+        // 重新初始化卡片位置
+        updateCardPositions();
+    }
+});
+
+// 瀑布流布局的无限滚动
+function handleMasonryScroll() {
+    if (!isMasonryLayout) return;
+    
+    const gallery = document.querySelector('.gallery');
+    if (window.innerHeight + window.scrollY >= gallery.offsetHeight - 100) {
+        loadMorePhotos();
+    }
+}
+
+window.addEventListener('scroll', handleMasonryScroll);
+
 function updateCardPositions() {
     cards.forEach((card, index) => {
         const offset = index - currentIndex;
-        const translateX = offset * 100;
-        const translateY = offset * 50;
-        const translateZ = -Math.abs(offset) * 100;
+        const translateX = offset * 150;
+        const translateY = offset * 75;
+        const translateZ = -Math.abs(offset) * 200;
 
         // 基础位置和缩放
         const transform = `
@@ -48,22 +85,29 @@ function updateCardPositions() {
 
 function handleScroll(event) {
     event.preventDefault();
+    
+    // 如果正在滚动中，则返回
+    if (isScrolling) return;
+    
+    // 设置滚动标志
+    isScrolling = true;
+    
     const delta = Math.sign(event.deltaY);
     currentIndex = (currentIndex + delta + totalCards) % totalCards;
 
     // 更新卡片位置
     updateCardPositions();
 
-    // 获取当前中间的卡片
-    const centerCard = cards[currentIndex];
-    if (centerCard) {
-        // 可以选择是否显示详情
-        // showProjectDetails(centerCard);
-    }
-
+    // 检查是否需要加载更多卡片
     if (currentIndex > totalCards - visibleCards - 5) {
         loadMorePhotos();
     }
+
+    // 300毫秒后才能进行下一次滚动
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+    }, 100); // 可以调整这个值来改变滚动的灵敏度，值越大滚动越不灵敏
 }
 
 function handleCardHover(event) {
@@ -86,13 +130,25 @@ function handleCardLeave(event) {
 }
 
 function loadMorePhotos() {
-    for (let i = 0; i < 15; i++) {
-        const newCard = cards[i % 15].cloneNode(true);
-        gallery.appendChild(newCard);
+    const cardContainer = document.querySelector('.card-container');
+    if (!cardContainer) {
+        console.error('Card container not found');
+        return;
     }
+
+    const originalCards = Array.from(document.querySelectorAll('.card')).slice(0, 10); // 获取原始卡片（前10张）
+    const startIndex = totalCards % originalCards.length; // 计算下一个要添加的卡片索引
+
+    // 按顺序添加5张新卡片
+    for (let i = 0; i < 5; i++) {
+        const index = (startIndex + i) % originalCards.length;
+        const newCard = originalCards[index].cloneNode(true);
+        cardContainer.appendChild(newCard);
+    }
+
+    // 更新卡片列表和总数
     cards = document.querySelectorAll('.card');
     totalCards = cards.length;
-    updateCardPositions();
 }
 
 // 更新事件监听器
@@ -106,19 +162,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 gallery.addEventListener('wheel', handleScroll, {
-    passive: true
+    passive: false
 });
 closeDetails.addEventListener('click', hideProjectDetails);
 
 // 初始化卡片位置
 updateCardPositions();
 
-// 添加鼠标移动效果
-document.addEventListener('mousemove', (e) => {
+// 添加鼠标移动事件处理
+function handleMouseMove(e) {
     const mouseX = e.clientX / window.innerWidth - 0.5;
     const mouseY = e.clientY / window.innerHeight - 0.5;
 
-    gallery.style.transform = `rotateY(${mouseX * 10}deg) rotateX(${-mouseY * 10}deg)`;
+    cards.forEach((card, index) => {
+        const offset = index - currentIndex;
+        
+        // 如果是中间的卡片（active卡片），则不添加移动效果
+        if (Math.abs(offset) === 0) {
+            return;
+        }
+
+        // 根据卡片与中心的距离计算移动效果
+        const moveX = mouseX * 50 * Math.abs(offset);
+        const moveY = mouseY * 30 * Math.abs(offset);
+        const moveZ = -Math.abs(offset) * 200;
+
+        const transform = `
+            translateX(${offset * 150 + moveX}px)
+            translateY(${offset * 75 + moveY}px)
+            translateZ(${moveZ}px)
+            scale(${Math.abs(offset) === 0 ? 1.2 : 0.8})
+        `;
+
+        card.style.transform = transform;
+        card.style.transition = 'transform 0.1s ease-out';
+    });
+}
+
+// 初始添加鼠标移动事件监听
+document.addEventListener('mousemove', handleMouseMove);
+
+// 添加鼠标离开时的重置效果
+document.addEventListener('mouseleave', () => {
+    cards.forEach((card, index) => {
+        const offset = index - currentIndex;
+        const transform = `
+            translateX(${offset * 150}px)
+            translateY(${offset * 75}px)
+            translateZ(${-Math.abs(offset) * 200}px)
+            scale(${Math.abs(offset) === 0 ? 1.2 : 0.8})
+            rotateY(0deg)
+            rotateX(0deg)
+        `;
+        
+        card.style.transform = transform;
+        card.style.transition = 'transform 0.3s ease-out';
+    });
 });
 
 // 动轮播
@@ -203,4 +302,6 @@ categoryButtons.forEach(button => {
         button.classList.add('active');
     });
 });
+
+document.addEventListener('scroll', handleScroll, { passive: false });
 
